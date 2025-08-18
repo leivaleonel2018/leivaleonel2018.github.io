@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feliz Cumple,para mi amor ANAA</title>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       Variables de color
+       ========================= */
+    :root{
+      --bg1: #ffe5ec;      /* rosa claro */
+      --bg2: #fff0f5;      /* lavanda rosada */
+      --primary: #ff4d88;  /* rosa vibrante */
+      --primary-dark:#d93672;
+      --accent: #ffbd59;   /* dorado suave */
+      --mint: #7ee0c1;
+      --violet:#8b6cff;
+      --ink: #2b2b2b;
+      --white:#ffffff;
+      --shadow: rgba(0,0,0,0.12);
+    }
+
+    /* =========================
+       Reset base
+       ========================= */
+    *{ box-sizing: border-box; }
+    html, body{ margin:0; padding:0; }
+    body{
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(120deg, var(--bg1), var(--bg2));
+      overflow-x: hidden;
+    }
+
+    /* Fondo animado sutil */
+    .bg-anim{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(40vmax 40vmax at 20% 10%, rgba(255,77,136,.10), transparent 60%),
+        radial-gradient(50vmax 50vmax at 80% 20%, rgba(139,108,255,.10), transparent 60%),
+        radial-gradient(45vmax 45vmax at 30% 80%, rgba(255,189,89,.12), transparent 60%);
+      filter: blur(0.5px);
+      z-index: 0;
+      animation: drift 24s ease-in-out infinite alternate;
+    }
+    @keyframes drift {
+      to{ transform: translate3d(0,-20px,0) scale(1.02); }
+    }
+
+    /* =========================
+       Navegación superior
+       ========================= */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.55);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .nav__inner{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: .6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .brand{
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: var(--primary);
+      letter-spacing: .5px;
+      white-space: nowrap;
+    }
+    .nav a{
+      color: #444;
+      text-decoration: none;
+      padding: .5rem .8rem;
+      border-radius: 999px;
+      transition: background .2s, transform .2s;
+      display: inline-block;
+    }
+    .nav a:hover{
+      background: rgba(255,77,136,.12);
+      transform: translateY(-1px);
+    }
+    .cta-audio{
+      margin-left: auto;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 999px;
+      padding: .55rem .9rem;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(255,77,136,.36);
+      transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+    }
+    .cta-audio:hover{ transform: translateY(-1px); box-shadow: 0 10px 18px rgba(255,77,136,.36); }
+    .cta-audio:active{ transform: translateY(0); background: var(--primary-dark); }
+
+    /* =========================
+       Portada (hero)
+       ========================= */
+    header{
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 1.5rem auto 2rem;
+      padding: 1rem;
+    }
+    .hero{
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+    .hero__title{
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.1;
+      color: var(--primary);
+      margin: .2rem 0 .6rem;
+      text-shadow: 0 6px 14px rgba(255,77,136,.2);
+    }
+    .hero__lead{
+      font-size: 1.05rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    .hero__tag{
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,.06);
+      padding: .5rem .8rem;
+      border-radius: 999px;
+      box-shadow: 0 6px 16px var(--shadow);
+      font-weight: 600;
+      color: #555;
+    }
+
+    /* Marco foto portada */
+    .frame{
+      position: relative;
+      border-radius: 18px;
+      padding: 10px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.7)) padding-box,
+        conic-gradient(from 180deg at 50% 50%, #ff8fb3, #ffd188, #9edec8, #c5b8ff, #ff8fb3) border-box;
+      border: 3px solid transparent;
+      box-shadow: 0 12px 28px rgba(0,0,0,.12);
+      overflow: hidden;
+    }
+    .frame img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      filter: saturate(1.05) contrast(1.02);
+      transform: scale(1.01);
+    }
+    .stickers{
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .sticker{
+      position: absolute;
+      font-size: 1.8rem;
+      transform: rotate(-12deg);
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));
+      opacity: .95;
+      animation: wiggle 3s ease-in-out infinite;
+    }
+    .sticker.two{ right: 10px; bottom: 10px; transform: rotate(8deg); animation-delay: .6s; }
+    .sticker.three{ left: 6px; top: 6px; transform: rotate(18deg); animation-delay: .3s; }
+    @keyframes wiggle{
+      0%,100%{ transform: translateY(0) rotate(-8deg) }
+      50%{ transform: translateY(-4px) rotate(-12deg) }
+    }
+
+    /* Globos flotando */
+    .balloons{
+      pointer-events: none;
+      position: fixed;
+      left: -80px;
+      bottom: -120px;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .balloon{
+      position: absolute;
+      width: 40px;
+      height: 52px;
+      background: var(--accent);
+      border-radius: 50% 50% 45% 45%;
+      box-shadow: inset -6px -8px 0 rgba(0,0,0,.06);
+      animation: rise 14s linear infinite;
+    }
+    .balloon:after{
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -18px;
+      width: 2px;
+      height: 40px;
+      background: rgba(0,0,0,.12);
+      transform: translateX(-50%);
+    }
+    @keyframes rise{
+      0%{ transform: translateY(30vh) translateX(0) rotate(0deg); opacity: 0; }
+      10%{ opacity: 1; }
+      100%{ transform: translateY(-120vh) translateX(40px) rotate(6deg); opacity: .9; }
+    }
+    /* Variaciones de color y posición de globos */
+    .b1{ left: 10%; background: #ff8fb3; animation-delay: 0s; }
+    .b2{ left: 25%; background: #ffd188; animation-delay: 2s; }
+    .b3{ left: 40%; background: #9edec8; animation-delay: 4s; }
+    .b4{ left: 60%; background: #c5b8ff; animation-delay: 1s; }
+    .b5{ left: 75%; background: #ff8fb3; animation-delay: 3s; }
+    .b6{ left: 88%; background: #ffd188; animation-delay: 5s; }
+
+    /* Corazones suaves de fondo */
+    .hearts{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hearts::before,
+    .hearts::after{
+      content: '❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤';
+      position: absolute;
+      font-size: 24px;
+      color: rgba(255,77,136,.16);
+      left: 10px;
+      top: 10px;
+      animation: float-hearts 18s linear infinite;
+      white-space: pre;
+    }
+    .hearts::after{
+      top: auto;
+      bottom: 10px;
+      left: auto;
+      right: 10px;
+      animation-duration: 22s;
+      opacity: .6;
+    }
+    @keyframes float-hearts{
+      0%{ transform: translateY(0) }
+      100%{ transform: translateY(-60px) }
+    }
+
+    /* =========================
+       Secciones Generales
+       ========================= */
+    section{
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 2.2rem auto;
+      padding: 0 1rem;
+    }
+    .section-title{
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--primary);
+      margin: 1rem 0 .8rem;
+      text-align: center;
+      text-shadow: 0 6px 14px rgba(255,77,136,.18);
+    }
+    .subtle{ text-align: center; color:#555; margin-top: -.3rem; }
+
+    /* =========================
+       Galería de fotos
+       ========================= */
+    .gallery{
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 1rem;
+    }
+    .photo{
+      grid-column: span 4;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+      outline: 3px solid transparent;
+      transition: transform .25s ease, box-shadow .25s ease, outline-color .25s ease;
+      background: #fff;
+    }
+    .photo:hover{
+      transform: translateY(-4px) rotate(-.2deg);
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+      outline-color: rgba(255,77,136,.25);
+    }
+    .photo img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+    }
+    .photo .caption{
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      background: rgba(255,255,255,.86);
+      padding: .35rem .6rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: #444;
+      box-shadow: 0 6px 12px rgba(0,0,0,.12);
+    }
+    @media (max-width: 900px){
+      .photo{ grid-column: span 6; }
+    }
+    @media (max-width: 600px){
+      .photo{ grid-column: span 12; }
+    }
+
+    /* =========================
+       Videos
+       ========================= */
+    .videos{
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 1rem;
+    }
+    .video-card{
+      grid-column: span 6;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .video-card:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0,0,0,.16);
+    }
+    .video-card header{
+      padding: .8rem 1rem 0;
+      margin: 0;
+    }
+    .video-card h4{
+      margin: 0 0 .6rem;
+      color: #444;
+    }
+    .video-wrap, .video-wrap iframe, .video-wrap video{
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+      background: #f8f8f8;
+    }
+    .video-wrap video{
+      outline: none;
+    }
+    @media (max-width: 900px){
+      .video-card{ grid-column: span 12; }
+    }
+
+    /* =========================
+       Recuerdos (timeline)
+       ========================= */
+    .timeline{
+      position: relative;
+      margin-top: 1rem;
+      padding-left: 18px;
+    }
+    .timeline::before{
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(var(--primary), var(--violet));
+      border-radius: 4px;
+      opacity: .35;
+    }
+    .memory{
+      position: relative;
+      margin: 1rem 0 1.2rem 0;
+      padding-left: 14px;
+    }
+    .memory::before{
+      content: '';
+      position: absolute;
+      left: -2px;
+      top: 10px;
+      width: 16px;
+      height: 16px;
+      background: var(--white);
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,.12);
+    }
+    .memory-card{
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.10);
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.05);
+    }
+    .memory-head{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .8rem;
+      padding: .8rem 1rem;
+      background: linear-gradient(90deg, rgba(255,77,136,.10), transparent);
+    }
+    .memory-date{ font-weight: 700; color: var(--primary-dark); }
+    .memory-body{ padding: .8rem 1rem 1rem; color: #444; }
+    .memory-actions{
+      display: flex;
+      gap: .6rem;
+      padding: 0 1rem 1rem;
+    }
+    .btn{
+      background: var(--white);
+      color: #444;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 999px;
+      padding: .45rem .8rem;
+      cursor: pointer;
+      transition: transform .15s, background .2s, box-shadow .2s;
+      box-shadow: 0 6px 14px rgba(0,0,0,.08);
+    }
+    .btn:hover{ transform: translateY(-1px); background: #fff; }
+    .btn.primary{ background: var(--primary); color: var(--white); border-color: transparent; box-shadow: 0 8px 16px rgba(255,77,136,.28); }
+    .btn.primary:hover{ background: var(--primary-dark); }
+
+    .memory-photo{
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      aspect-ratio: 16/9;
+    }
+
+    .add-memory{
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 1.5fr 2fr .8fr;
+      gap: .6rem;
+    }
+    .add-memory input, .add-memory textarea{
+      width: 100%;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 10px;
+      padding: .6rem .7rem;
+      font: inherit;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,.04) inset;
+    }
+    .add-memory textarea{ resize: vertical; min-height: 38px; }
+    @media (max-width: 800px){
+      .add-memory{ grid-template-columns: 1fr; }
+    }
+
+    /* =========================
+       Cierre
+       ========================= */
+    .closing{
+      text-align: center;
+      background:
+        radial-gradient(80vmax 80vmax at 50% 120%, rgba(255,189,89,.16), transparent 60%),
+        radial-gradient(60vmax 60vmax at -20% 40%, rgba(139,108,255,.16), transparent 60%);
+      padding: 2rem 1rem 3rem;
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(0,0,0,.10);
+      border: 1px solid rgba(0,0,0,.05);
+    }
+    .closing h3{
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--primary);
+      margin: 0 0 .5rem;
+    }
+    .sig{
+      display: inline-block;
+      margin-top: 1rem;
+      padding: .6rem 1rem;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,.06);
+      box-shadow: 0 8px 16px rgba(0,0,0,.08);
+      color: #444;
+      font-weight: 700;
+    }
+
+    /* Fuegos artificiales simples */
+    .fireworks{
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+    }
+    .fireworks.active{ display: block; }
+    .spark{
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(255,189,89,.8);
+      animation: boom .8s ease-out forwards;
+    }
+    @keyframes boom{
+      0%{ transform: translate(0,0) scale(1); opacity: 1; }
+      100%{ transform: translate(var(--dx), var(--dy)) scale(.8); opacity: 0; }
+    }
+
+    /* Indicador scroll */
+    .scroll-hint{
+      margin-top: .6rem;
+      color: #666;
+      display: inline-flex;
+      gap: .4rem;
+      align-items: center;
+      animation: bob 1.8s ease-in-out infinite;
+    }
+    @keyframes bob{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(4px); }
+    }
+
+    /* Footer */
+    footer{
+      text-align: center;
+      color: #777;
+      padding: 2rem 1rem 4rem;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="bg-anim"></div>
+  <div class="hearts"></div>
+
+  <!-- Globos -->
+  <div class="balloons" aria-hidden="true">
+    <div class="balloon b1"></div>
+    <div class="balloon b2"></div>
+    <div class="balloon b3"></div>
+    <div class="balloon b4"></div>
+    <div class="balloon b5"></div>
+    <div class="balloon b6"></div>
+  </div>
+
+  <!-- Música opcional -->
+  <audio id="bg-music" loop>
+    <!-- Reemplaza por tu canción: assets/musica/tu-cancion.mp3 -->
+    <source src="" type="audio/mpeg">
+  </audio>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <div class="brand">Feliz cumple, ANA</div>
+      <a href="#portada">Portada</a>
+      <a href="#fotos">Fotos</a>
+      <a href="#videos">Videos</a>
+      <a href="#recuerdos">Recuerdos</a>
+      <a href="#cierre">Cierre</a>
+      <button class="cta-audio" id="playMusic">▶ Música</button>
+    </div>
+  </nav>
+
+  <!-- PORTADA -->
+  <header id="portada">
+    <div class="hero">
+      <div>
+        <div class="hero__tag">🎈 Hecho con amor por Leonel</div>
+        <h1 class="hero__title">Feliz cumpleaños,ANAAAAA</h1>
+        <p class="hero__lead">
+          bueno ana amor, no se por donde empezar ahre, llevamos poco tiempo pero lpm lo que me esta costando JAJAJA
+          ,aca prepare unos momentos que pasamos juntos, son re pocos pero bueno algo es algo jiojio
+        </p>
+        <div class="scroll-hint">mira hacia abajo ahre ↓<div>
+      </div>
+      <div class="frame">
+        <!-- Reemplaza por tu foto favorita -->
+        <img src="assets/fotos/portada.jpg" alt="Foto especial de nosotros">
+        <div class="stickers">
+          <div class="sticker">💖</div>
+          <div class="sticker two">🎀</div>
+          <div class="sticker three">🎂</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FOTOS -->
+  <section id="fotos">
+    <h2 class="section-title">Nuestros momentos en fotos 📸</h2>
+    <p class="subtle">mis fotitos favoritas y estoy seguro que las tuyas tambien, aunque cada foto que nos vamos sacando me gustan cada vez nas.</p>
+    <div class="gallery">
+      <!-- Reemplaza las rutas por tus imágenes -->
+      <figure class="photo">
+        <img src="assets/fotos/1.jpg" alt="Recuerdo 1">
+        <figcaption class="caption">Nuestra primera salida</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/fotos/2.jpg" alt="Recuerdo 2">
+        <figcaption class="caption">Tu sonrisa 🎈</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/fotos/3.jpg" alt="Recuerdo 3">
+        <figcaption class="caption">Un abrazo que cura</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/fotos/4.jpg" alt="Recuerdo 4">
+        <figcaption class="caption">sabado perfecto💕</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/fotos/5.jpg" alt="Recuerdo 5">
+        <figcaption class="caption">Tu mirada 💕</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/fotos/6.jpg" alt="Recuerdo 6">
+        <figcaption class="caption">Nosotros</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section id="videos">
+    <h2 class="section-title">Videos para revivir momentos</h2>
+    <p class="subtle">no pude poner el videito pero si la musica jiji perdon</p>
+    <div class="videos">
+      <!-- Video local -->
+      <article class="video-card">
+        <header>
+          <h4>😔</h4>
+        </header>
+        <div class="video-wrap">
+          <video controls poster="assets/fotos/portada.jpg">
+            <source src="assets/videos/brindis.mp4" type="video/mp4">
+          </video>
+        </div>
+      </article>
+
+      <!-- Video de YouTube -->
+      <article class="video-card">
+        <header>
+          <h4>una musica que me gusta un monton y te la dedico🎶</h4>
+        </header>
+        <div class="video-wrap">
+          <!-- Reemplaza el ID del video -->
+          <iframe src="https://www.youtube.com/embed/yQDAXknlVL8?list=RDyQDAXknlVL8&start_radio=1"
+                  title="YouTube video"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RECUERDOS -->
+  <section id="recuerdos">
+    <h2 class="section-title">nuestroos atardeceresss🌅</h2>
+    <p class="subtle">Altas pics que sacaste ahre.</p>
+
+    <div class="timeline" id="timeline">
+      <!-- Ejemplos de recuerdos -->
+      <div class="memory">
+        <div class="memory-card">
+          <div class="memory-head">
+            <div class="memory-date">12/07/2025</div>
+            <div>un hermoso dia an la plaziña jiji</div>
+          </div>
+          <img class="memory-photo" src="assets/fotos/7.jpg" alt="Atardecer en la plazita">
+          <div class="memory-body">
+            y bueno como olvidar este dia, el dia de nuestro primer beso, el dia de nuestro primer abrazo, el dia que se fue volando JAJAJAJAJA , en fin un dia hermoso como tu amor
+          <div class="memory-actions">
+            <button class="btn primary" onclick="sparkFireworks()">✨ Celebrar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="memory">
+        <div class="memory-card">
+          <div class="memory-head">
+            <div class="memory-date">23/07/2025</div>
+            <div>otro hermoso dia</div>
+          </div>
+          <img class="memory-photo" src="assets/fotos/8.jpg" alt="Atardecer en la plazita">
+          <div class="memory-body">
+            me cuestan un poco las palabras asi que no voy a decir nada ahr
+          </div>
+          <div class="memory-actions">
+            <button class="btn primary" onclick="sparkFireworks()">✨ Celebrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agregar nuevo recuerdo -->
+    <div class="add-memory">
+      <input id="dateInput" type="text" placeholder="Fecha (dd/mm/aaaa)" />
+      <textarea id="textInput" placeholder="Escribí el recuerdo..."></textarea>
+      <button class="btn primary" onclick="addMemory()">Agregar</button>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section id="cierre" class="closing">
+    <h3>Gracias por existir, Ana Lucia Blanco🎂</h3>
+    <p>
+      Ojalá este pequeño regalo te abrace el corazón.espero pasar mas atardeceres y risas de esas que te hacen cerrar los ojos.
+      Yo se que aveces me cuesta un poco expresarme, aveces capaz no hablo mucho o soy muy cortante, tambien quiero que sepas que sos la primer persona del sexo opuesto ahre, con la que paso tanto tiempo y que me gusta hacerlo.
+      Se que soy dificil de querer y que aveces me cuesta abrirme, 
+      pero quiero que sepas que sos una persona muy especial para mi y que cada momento a tu lado es un regalo.
+      espero que lo que nos quede de año este lleno de risas y momentos hermosos juntos, y que podamos seguir creando recuerdos. 
+      TE AMO
+
+    </p>
+    <button class="btn primary" onclick="sparkFireworks()">Lanzar fueguitos ✨</button>
+    <div class="sig">Con amor, Leonel Samuel Leiva</div>
+  </section>
+
+  <footer>
+    Hecho a mano con ❤️ — en fin ana amor si queres agregar algo mas avisame, creo que tenes mi numero sino cualquier cosa por ig ahr
+  </footer>
+
+  <!-- Capa de fuegos -->
+  <div class="fireworks" id="fireworks"></div>
+
+  <script>
+    // Botón de música
+    const playBtn = document.getElementById('playMusic');
+    const music = document.getElementById('bg-music');
+    playBtn.addEventListener('click', () => {
+      if(!music.src){
+        // Consejo: coloca tu archivo de música y poné la ruta abajo
+        // music.src = 'assets/musica/tu-cancion.mp3';
+      }
+      if(music.paused){
+        music.volume = 0.6;
+        music.play().catch(()=>{});
+        playBtn.textContent = '⏸ Música';
+      }else{
+        music.pause();
+        playBtn.textContent = '▶ Música';
+      }
+    });
+
+    // Toggle "Ver más": agrega texto extra de ejemplo
+    function toggleMore(btn){
+      const body = btn.closest('.memory-card').querySelector('.memory-body');
+      if(btn.dataset.more !== '1'){
+        const extra = document.createElement('div');
+        extra.className = 'more';
+        extra.textContent = '…y ese día entendí que los momentos simples con vos son mis favoritos.';
+        extra.style.marginTop = '.4rem';
+        extra.style.color = '#555';
+        body.appendChild(extra);
+        btn.dataset.more = '1';
+        btn.textContent = 'Ver menos';
+      }else{
+        const extra = body.querySelector('.more');
+        if(extra) extra.remove();
+        btn.dataset.more = '0';
+        btn.textContent = 'Ver más';
+      }
+    }
+
+    // Agregar recuerdos rápidos a la timeline (sin persistencia)
+    function addMemory(){
+      const date = document.getElementById('dateInput').value.trim();
+      const text = document.getElementById('textInput').value.trim();
+      if(!date || !text) return alert('Completá la fecha y el recuerdo.');
+      const wrap = document.createElement('div');
+      wrap.className = 'memory';
+      wrap.innerHTML = `
+        <div class="memory-card">
+          <div class="memory-head">
+            <div class="memory-date">${date}</div>
+            <div>Nuevo recuerdo</div>
+          </div>
+          <div class="memory-body">${text}</div>
+          <div class="memory-actions">
+            <button class="btn" onclick="toggleMore(this)">Ver más</button>
+            <button class="btn primary" onclick="sparkFireworks()">✨ Celebrar</button>
+          </div>
+        </div>`;
+      document.getElementById('timeline').appendChild(wrap);
+      document.getElementById('dateInput').value = '';
+      document.getElementById('textInput').value = '';
+      window.scrollTo({ top: wrap.getBoundingClientRect().top + window.scrollY - 120, behavior: 'smooth' });
+      sparkFireworks();
+    }
+
+    // Fuegos artificiales sencillos
+    function sparkFireworks(){
+      const fw = document.getElementById('fireworks');
+      fw.classList.add('active');
+      const cx = Math.random() * window.innerWidth;
+      const cy = Math.random() * window.innerHeight * 0.6 + window.innerHeight*0.1;
+      const count = 26;
+      for(let i=0;i<count;i++){
+        const s = document.createElement('div');
+        s.className = 'spark';
+        const angle = (Math.PI * 2) * (i / count);
+        const dist = 80 + Math.random()*60;
+        const dx = Math.cos(angle) * dist + (Math.random()*30-15);
+        const dy = Math.sin(angle) * dist + (Math.random()*30-15);
+        s.style.left = cx + 'px';
+        s.style.top = cy + 'px';
+        s.style.setProperty('--dx', dx + 'px');
+        s.style.setProperty('--dy', dy + 'px');
+        s.style.background = i%3===0 ? '#ff8fb3' : (i%3===1 ? '#ffd188' : '#9edec8');
+        fw.appendChild(s);
+        setTimeout(()=> s.remove(), 900);
+      }
+      setTimeout(()=> fw.classList.remove('active'), 950);
+    }
+
+    // Lluvia de corazones al hacer click
+    document.addEventListener('click', (e)=>{
+      const heart = document.createElement('div');
+      heart.textContent = '💗';
+      heart.style.position = 'fixed';
+      heart.style.left = (e.clientX - 10) + 'px';
+      heart.style.top = (e.clientY - 10) + 'px';
+      heart.style.fontSize = '20px';
+      heart.style.pointerEvents = 'none';
+      heart.style.transition = 'transform .9s ease, opacity .9s ease';
+      heart.style.zIndex = 60;
+      document.body.appendChild(heart);
+      requestAnimationFrame(()=>{
+        heart.style.transform = 'translateY(-60px) scale(1.6) rotate(-10deg)';
+        heart.style.opacity = '0';
+      });
+      setTimeout(()=> heart.remove(), 900);
+    }, false);
+  </script>
+</body>
+</html>
