@@ -12,6 +12,37 @@
   <meta property="og:url" content="https://felizcumplemiamoranaaaio.vercel.app/">
   <meta property="og:type" content="website">
   
+    <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Feliz Cumpleaños, ANAA">
+  <meta name="twitter:description" content="Un pequeño regalo para mi amor en su día especial.">
+  <meta name="twitter:image" content="https://felizcumplemiamoranaaaio.vercel.app/assets/fotos/portada.jpg">
+
+    <!-- Favicon y colores -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#ff4d88">
+
+  <!-- (Opcional) Manifest PWA -->
+  <link rel="manifest" href="/manifest.json">
+
+  <script>
+  // Share button (WhatsApp fallback)
+  const shareBtn = document.getElementById('shareBtn');
+  const pageUrl = 'https://felizcumplemiamoranaaaio.vercel.app/';
+  const shareText = encodeURIComponent('Mirá esto — Feliz cumple, Ana 🎂') ;
+  shareBtn.addEventListener('click', async () => {
+    if (navigator.share) {
+      try { await navigator.share({ title: 'Feliz Cumple, ANAA', text: 'Mirá esto — Feliz cumple, Ana 🎂', url: pageUrl }); }
+      catch(e) {}
+    } else {
+      // Fallback: abrir WhatsApp (móvil/pc)
+      const wa = `https://wa.me/?text=${shareText}%20${encodeURIComponent(pageUrl)}`;
+      window.open(wa, '_blank');
+    }
+  });
+</script>
+  
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -867,6 +898,7 @@
   </script>
 </body>
 </html>
+
 
 
 
